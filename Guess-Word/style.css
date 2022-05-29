@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.answer{
+    height: 50vh;
+    display: grid;
+    grid-gap: 5px;
+    grid-template-rows: repeat(6 , 1fr);
+}
+.lines{
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: repeat(6 , 1fr);
+}
+.letters{
+    border: 1px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.keyboard{
+    height: 50vh;
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(10 ,1fr);
+    grid-template-rows: repeat(5 , 1fr);
+}
+
+.key{
+cursor: pointer;
+}
