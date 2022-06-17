@@ -23,6 +23,24 @@ const keys = [
 let WinWordNumber = 0;
 let lineNumber = 0;
 let letterNumber = 0;
+let WinWordNumbersArray;
+
+WinWordNumbersArray = randomNumbers();
+
+function randomNumbers() {
+    let setRandom = new Set();
+    let arr = [];
+    let i = 0;
+    while(setRandom.size < 10){    
+      const random = Math.floor(Math.random() * 101);
+      if(!setRandom.has(random)){
+        setRandom.add(random);
+        arr.push(random);
+        i++;
+      }
+    }
+    return arr;
+  }
 
 function createKeyboard() {
 
