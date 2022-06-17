@@ -22,6 +22,11 @@
     text-align: center;
 }
 
+.wordNumber{
+    text-align: center;
+    padding-bottom: 10px;
+}
+
 .forgame{
     width: 450px;
 }
@@ -113,6 +118,93 @@ margin-bottom: 30px;
 button{
     border: none;
     border-radius: 5px;
+}
+
+.betweenWords{
+    z-index: 10;
+    background-color: white;
+    position: fixed;
+    width: 450px;
+    height: 100%;
+}
+
+.winTekst{
+    display: flex;
+    font-size: 50px;
+    height: 40%;
+    justify-content: center;
+    align-items: center;
+    color: green;
+    padding-top: 15vh;
+}
+
+.loseTekst{
+    display: flex;
+    font-size: 50px;
+    height: 40%;
+    justify-content: center;
+    align-items: center;
+    color: gray;
+    padding-top: 15vh;
+}
+
+
+
+.divForWord{
+    display: grid;
+    grid-template-columns: repeat(6 , 1fr);
+    height: 10%;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 100px;
+}
+
+.lettersBetweenWords{
+    border: 1px solid gray;
+    border-radius: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+}
+
+.btn{
+    display: block;
+    background-color: blue;
+    font-size: larger;
+    color: white;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.limitDiv{
+    z-index: 10;
+    background-color: white;
+    position: fixed;
+    width: 450px;
+    height: 100%;
+}
+
+.limitTekst{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 10px;
+    height: 50%;
+    font-size: 23px;
+}
+.limitTekst2{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 10px;
+    height: 50%;
+    font-size: 23px;
 }
 
 @media screen and (max-width: 450px)
