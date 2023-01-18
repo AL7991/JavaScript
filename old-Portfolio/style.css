@@ -1,0 +1,681 @@
+@import 
+url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import
+url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+@import
+url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import
+url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+@import 
+url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* HEADER */
+
+header
+{
+    position: fixed;
+    padding: 30px;
+    font-size: 50px;
+    color: white;
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #121212;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.3);
+}
+.webTitle
+{
+    font-family: 'Lobster', cursive;
+    width: 50%;
+    padding-left: 20px;
+}
+nav
+{
+    width: 50%;
+    text-align: center;
+    display: flex;
+    padding-left: 150px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+nav a:any-link
+{
+    padding: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+nav a:any-link:hover
+{
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 25px;
+}
+
+.navdiv1 , .navdiv2 , .navdiv3 , .navdiv4 , .navdiv5
+{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.navDiv1 > a:hover , 
+.navDiv2 > a:hover ,
+.navDiv3 > a:hover ,
+.navDiv4 > a:hover ,
+.navDiv5 > a:hover
+{
+    color: white;
+}
+
+.firstSection ,.aboutSection , .skillsSection , .cvSection 
+{
+    padding-top: 180px;
+    background-color: white;
+}
+
+.contactSection 
+{
+    padding-top: 100px;
+}
+
+.cvSection 
+{
+    padding-top: 80px;
+}
+
+/* FIRSTSECTION */
+
+.monitorImage
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+}
+
+.firstSection
+{
+    padding-top: 90px;
+}
+
+.forTyping
+{
+    position: absolute;
+    font-size: 1.5vw;
+    opacity: 0.9;
+    top: 43vh;
+    left: 35%;
+
+}
+
+.typing::after
+{
+    opacity: 0.7;
+    content: "";
+    right: -4px;
+    position: absolute;
+    width: 1px;
+    height: 100%;
+    border-right: 2px solid black;
+    animation: blink 0.5s infinite ease;
+}
+
+@keyframes blink{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+.firstBox , .aboutBox , .skillsBox , .cvBox , .conctactBox
+{
+    min-height: 700px;
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+    color: black;
+    border-radius: 200px;
+}
+
+.skillsBox , .aboutBox{
+margin-top: 0;
+}
+
+/* ABOUT */
+
+.aboutTitle
+{
+font-family: 'Poppins', sans-serif;
+font-size: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.aboutBox
+{
+min-height: 700px;
+width: 1100px;
+display: grid;
+grid-template-columns: repeat(2 , 1fr);
+}
+
+.aboutText
+{
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr 1fr 3fr;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s all ease-in-out;
+}
+
+.abouttext-show
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.aboutHi
+{
+font-family: 'Playfair Display', serif;
+font-size: 45px;
+font-weight: 50;
+grid-row: 2 / 2;
+display: flex;
+align-items: flex-end;
+}
+
+.aboutName
+{
+    font-size: 70px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 100;
+    grid-row: 3 / 3;
+}
+
+.aboutDeveloper
+{
+    font-family: 'Playfair Display', serif;
+    font-weight: 100;
+    font-size: 40px;
+    grid-row: 4 / 4;
+}
+
+.aboutBox span
+{
+    font-size: 20px;
+    font-weight: 500;
+    grid-row: 5 / 5;
+} 
+
+.photoContainer
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.photo
+{
+    width:410px;
+    height:400px;
+    border-radius: 300px;
+}
+
+/* SKILLSSECTION */
+
+.skillsBox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1500px;
+    flex-wrap: wrap;
+}
+
+.skillsImage
+{
+    height: 550px;
+    width: 650px;
+    padding: 50px;   
+}
+
+.skillsBox span
+{
+    font-family: 'Playfair Display', serif;
+    font-size: 40px;
+    display: block;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+.aboutSkills
+{
+font-family: 'Poppins', sans-serif;
+font-size: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.listy
+{
+    display: flex;
+    justify-content: space-around;
+    font-size: 22;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s all ease-in-out;
+
+}
+
+.listy-show
+{
+    opacity: 1;
+    transform: translateY(0px);
+}
+
+.skillsBox li
+{
+    text-align: center;
+    padding: 10px;
+    margin: 15px;
+    list-style: none;
+}
+
+
+/* CV  */
+
+.cvBox
+{
+    width: 1500px;
+    display: grid;
+}
+
+.aboutCV
+{
+font-family: 'Poppins', sans-serif;
+font-size: 50px;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.wrapCv
+{
+display: grid;
+grid-template-columns: repeat(2 , 1fr);
+padding: 50px;
+}
+.wrapCv > img
+{
+    margin-left: auto;
+    margin-right: auto;
+    height: 550px;
+    width: 650px;
+    padding: 50px;   
+}
+
+.buttonCv
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    height: 100px;
+    border-radius: 50px;
+    margin: auto;
+    margin-top: 100px;
+    font-size: 35;
+    text-decoration: none;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    transition: all 0.4s ease-in-out;
+}
+.buttonCv i
+{
+    margin-right: 5px;
+}
+
+.buttonCv:hover
+{
+    cursor: pointer;
+    background-color: black;
+    font-size: 40;
+    color: white;
+}
+
+.spanCV
+{
+    font-family: 'Playfair Display', serif;
+    font-size: 30;
+    margin: auto;
+    margin-top: 100px;
+
+}
+.spanCV > span
+{
+ display: block;
+ padding: 10px;
+}
+
+
+.contentCV
+{
+    display: grid;
+    grid-template-rows: repeat(3 , 1fr);
+    text-align: center;
+    transform: translateY(20px);
+    visibility: hidden;
+    opacity: 0;
+    transition: 1s all ease-in-out;
+    
+}
+
+.contentCV-show
+{
+    transform: translateY(0px);
+    visibility: visible;
+    opacity: 1;
+}
+
+/* CONTACT */
+
+.conctactBox
+{
+    margin-bottom: 300px;
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    grid-template-rows: repeat(8,1fr);
+}
+.contactTitle
+{
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+    grid-column: 3 / 5;
+    grid-row: 1 / 3;
+    text-align: center
+}
+.name
+{
+height: 40px;
+grid-row-start: 3;
+grid-column: 1 / 3;
+}
+
+.email
+{
+    height: 40px;
+grid-row-start: 3;
+grid-column: 5 / 7;
+}
+
+.subject
+{
+    height: 40px;
+    grid-row-start: 4;
+    grid-column: 1 / 7;
+}
+
+.message
+{
+    grid-row-start: 5;
+    grid-row-end: 7 ;
+    grid-column: 1 / 7;
+}
+
+.button
+{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 800;
+    height: 50px;
+    grid-row-start: 8;
+    grid-column: 3 / 5;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+    transition: all 0.4s ease-in-out;
+}
+.button:hover
+{
+    background-color: black;
+    color: white;
+   cursor: pointer;
+   font-size:30px;
+}
+
+.name , .email , .subject , .message 
+{
+    font-size: 15px;
+    border-radius: 10px;
+    padding-left: 5px;
+    border: 1px solid black;
+    transition: all 0.3s ease-in-out;
+}
+
+::placeholder {
+    color: black;
+  }
+
+.message
+{
+    resize: none;
+    padding-top: 5px;
+    font-size: 15px;
+}
+
+.name:hover , .email:hover , .subject:hover , .message:hover
+{
+  font-size: 18px;
+} 
+
+.backToTop
+{
+    font-size: 30px;
+    display: flex;
+    height: 50px;
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: #0c0c0c;
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    color: white;
+    position: fixed;
+    border-radius: 30px;
+    right: 70px;
+    bottom: 70px;
+    text-decoration: none;
+    transition: width 1s ease-out, height 0.5s ease-out, background-color 0.5s ease-out;
+}
+
+.backToTop a:any-link
+{
+    text-decoration: none;
+    color: white;
+}
+
+.backToTop:hover
+{
+    background-color: white;
+    color: black;
+}
+
+/* FOOTER */
+
+footer
+{
+    display: flex;
+    height: 200px;
+    width: 100%;
+    background-color: #121212;
+    justify-content: center;
+    font-size: 17;
+}
+
+footer p 
+{
+    padding: 10px;
+    color: white;
+}
+
+.telFooter , .emailFooter , .githubFooter , .copyrightFooter
+{
+    height: 200px;
+    width: 200px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+    padding-top: 50px;
+}
+
+.githubFooter a:any-link
+{
+    text-decoration: none;
+}
+
+.githubFooter:hover
+{
+    cursor: pointer;
+}
+
+.copyrightFooter
+{
+    margin: 0;
+    padding: 0;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 2000px){
+    .forTyping
+    {
+        font-size: 1.7vw;
+        top: 45vh;
+    }
+ }
+
+@media screen and (max-width: 1700px){
+ .webTitle
+{
+    width: 40%;
+}
+    nav
+{
+    width: 60%;
+}
+
+.forTyping
+{
+    font-size: 1.5vw;
+}
+
+.aboutBox
+{
+width: auto;
+}
+
+.skillsBox
+{
+    width: auto;
+}
+.listy 
+{
+padding: 50px;
+}
+.cvBox
+{
+    width: auto;
+}
+.wrapCv
+{
+display: grid;
+grid-template-columns: none;
+grid-template-rows: repeat(2 , 1fr);
+padding: 0;
+}
+.contentCV
+{
+    grid-template-rows: repeat(2 , 1fr);
+}
+.buttonCv
+{
+    margin: auto;
+}
+.conctactBox
+{
+width: auto;
+}
+ }
+
+ @media screen and (max-width: 1025px){
+    .forTyping
+    {
+        font-size: 2vw;
+        top: 48vh;
+        left: 32%;
+    }
+    .aboutBox
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.photo
+{
+    width:310px;
+    height:300px;
+    border-radius: 200px;
+}
+.photoContainer{
+    padding: 50px;
+}
+
+.aboutText
+{
+ display: block;
+ text-align: center;
+}
+.aboutHi
+{
+   display: block;
+}
+ }
+
+ @media screen and (max-width: 425px)
+ {
+ .forTyping
+ {
+     font-size: 4vw;
+    top: 48vh;
+    left: 22%;
+ }
+ }
