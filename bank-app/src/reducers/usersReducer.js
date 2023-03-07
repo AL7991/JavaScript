@@ -1,6 +1,7 @@
 import { FETCH_LOGGED_USER_ERROR, FETCH_LOGGED_USER_INPROGRESS, FETCH_LOGGED_USER_SUCCESS } from "../actions/actionsTypes";
 
 const initialState = {
+        isLogged:false,
         inprogress: false,
         error:null,
         user:null
@@ -16,6 +17,7 @@ const userReducer = (state = initialState,action) => {
     else if(action.type === FETCH_LOGGED_USER_SUCCESS){
         return{
             ...state,
+            isLogged:true,
             inprogress: false,
             user: action.user
         };

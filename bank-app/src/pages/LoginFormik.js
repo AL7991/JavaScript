@@ -1,47 +1,56 @@
 import { Row, Col, Container } from "react-bootstrap";
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Formik, Form} from "formik";
 import MyInputFormik from "../components/MyInputFormik";
-import routes from "./../api";
+import loggedUser from "../services/LoggedUserService";
 
 class LoginFormik extends Component {
 
     constructor(props){
         super(props);
-        this.state={
-            error:false
+        this.state = {
+            userNameError: false,
+            passwordError: false
         };
     }
 
-    fetchToken =  values =>{
-        fetch(routes.server + routes.route.api.users.login,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body:JSON.stringify({userName: values.userName,password: values.password})
-        })
-        .then(res => {
-            if(res.ok){
-                return res.text();
-            }else{
-                this.setState({error:true});
-            }
-
-            })
-        .then(data =>{
-            sessionStorage.setItem('token', JSON.stringify(data));
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    }
+    handleSubmit =  values => {
+        const { userName, password} = values;
+        if(!userName){
+            this.setState({userNameError: true});
+        }
+        if(!password){
+            this.setState({passwordError: true});
+        }
+        if(userName && password){
+             this.props.dispatch(loggedUser(userName,password));
+        }
+    };
 
     render(){
+
+        const { loginLoading, isLogged, user } = this.props;
 
         return(
 
             <Container>
+                 {isLogged && (<h2>Hello {user.userName}</h2>)}
+                 {!isLogged && (
+                    <div>
+                    <h2>LogIn</h2>
+                    {loginLoading && "Login loading..."}
+                    {this.state.userNameError && (
+                        <div>
+                            Login is required
+                        </div>
+                    )}
+                    {this.state.passwordError && (
+                        <div>
+                            Password is required
+                        </div>
+                    )}
+
                 <Formik 
                     
                 initialValues={{
@@ -49,9 +58,7 @@ class LoginFormik extends Component {
                     password:""
                 }}
                 onSubmit={values => {
-                    console.log(values);
-                    this.fetchToken(values);
-                    
+                    this.handleSubmit(values);
                 }}
     
                 > 
@@ -87,6 +94,12 @@ class LoginFormik extends Component {
     
                 
                 </Formik>
+
+
+                    </div>
+                 )}
+
+
     
             </Container>
                 
@@ -97,4 +110,13 @@ class LoginFormik extends Component {
 
 }
 
-export default LoginFormik;
+function mapStateToProps(state) {
+    return {
+        loginLoading: state.usersReducer.inprogress,
+        isLogged:state.usersReducer.isLogged,
+        user: state.usersReducer.user
+    };
+}
+
+const connectedLoginPage = connect(mapStateToProps)(LoginFormik);
+export { connectedLoginPage as LoginPage };

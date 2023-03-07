@@ -1,8 +1,9 @@
 import routes from "../api"
+import { fetchLoggedUserInProgress, fetchLoggedUserSuccess, fetchLoggedUserError} from "../actions/usersActions";
 
 const loggedUser = (uName,pass) => {
     return dispatch =>{
-        dispatch(userActions.fetchLoggedUserInProgress());
+        dispatch(fetchLoggedUserInProgress());
         fetch(routes.server + routes.route.api.users.login,{
             method: "POST",
             headers: {
@@ -25,14 +26,14 @@ const loggedUser = (uName,pass) => {
                 }
             })
             .then(user => {
-                dispatch(userActions.fetchLoggedUserSuccess(user));
+                dispatch(fetchLoggedUserSuccess(user));
             })
             .catch(error => {
-                dispatch(userActions.fetchLoggedUserError(error));
+                dispatch(fetchLoggedUserError(error));
             })
         })
         .catch(error => {
-            dispatch(userActions.fetchLoggedUserError(error));
+            dispatch(fetchLoggedUserError(error));
         })
         }
 };
