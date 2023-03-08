@@ -1,5 +1,6 @@
 import routes from "../api"
 import { fetchLoggedUserInProgress, fetchLoggedUserSuccess, fetchLoggedUserError} from "../actions/usersActions";
+import { messageBagActions } from "../actions/messageBagActions";
 
 const loggedUser = (uName,pass) => {
     return dispatch =>{
@@ -27,9 +28,11 @@ const loggedUser = (uName,pass) => {
             })
             .then(user => {
                 dispatch(fetchLoggedUserSuccess(user));
+                dispatch(messageBagActions.success('LoggedIn'));
             })
             .catch(error => {
                 dispatch(fetchLoggedUserError(error));
+                dispatch(messageBagActions.error('Bad username or password'));
             })
         })
         .catch(error => {
