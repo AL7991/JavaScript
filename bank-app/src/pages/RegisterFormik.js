@@ -2,46 +2,56 @@ import { Row, Col, Container } from "react-bootstrap";
 import React, { Component } from "react";
 import { Formik, Form} from "formik";
 import MyInputFormik from "../components/MyInputFormik";
-import routes from "./../api";
+import RegisterUser from "../services/RegisterService";
+import { connect } from "react-redux";
 
 class RegisterFormik extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            error:false
+            errors:[]
         };
     }
 
-    registerUser =  values =>{
-        fetch(routes.server + routes.route.api.users.register,{
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-              },
-            body:JSON.stringify(values)
-        })
-        .then(res => {
-            if(res.ok){
-                return res.json();
-            }else{
-                this.setState({error:true});
-            }
+    handleSubmit =  values => {
+        let error = false;
+        this.setState({errors:[]});
 
-            })
-        .then(data =>{
-            console.log(data);
-        })
-        .catch(e => {
-            console.log(e);
-        });
-    }
+        for (const value in values) {
+            if(!values[value]){
+                if(value == "userName"){
+                    this.setState(prevState => ({ errors:[...prevState.errors,{fieldError:"login"}]}));
+                }else{
+                    this.setState(prevState => ({ errors:[...prevState.errors,{fieldError:value}]}));
+                }
+                error = true;
+            }
+          }
+        if(!error){
+            this.props.regUser(values);
+        }else{
+            console.log("errors has been caught");
+        }
+
+    };
 
     render(){
         
     return(
 
         <Container>
+
+            {this.state.errors.map((error, i)=>
+                <Row key={i}>
+                    <Col className="alert alert-danger" xs={12} md={4} key={i}>
+
+                       <div key={i}>{error.fieldError} field is required.</div> 
+
+                    </Col>
+                </Row>
+            )}
+
             <Formik 
                 
             initialValues={{
@@ -55,7 +65,7 @@ class RegisterFormik extends Component {
                 amountOfMoney:""
             }}
             onSubmit={values => {
-                this.registerUser(values);
+                this.handleSubmit(values);
             }}
             > 
             <Form>
@@ -147,7 +157,7 @@ class RegisterFormik extends Component {
                         </Col>
 
                         <Col xs={12}>
-                        <button type="submit" className="btn btn-primary btn-lg btn-block mt-2">Wyślij</button>
+                        <button type="submit" className="btn btn-primary btn-lg btn-block mt-2">Send</button>
                         </Col>
                 
                     </Row>
@@ -166,4 +176,13 @@ class RegisterFormik extends Component {
 
 }
 
-export default RegisterFormik;
+const mapDispatchToProps = dispatch => {
+    return {
+        regUser: user =>{
+        dispatch(RegisterUser(user));
+        }
+    };
+}
+
+
+export default connect(null,mapDispatchToProps)(RegisterFormik);

@@ -2,6 +2,7 @@ import './App.css';
 import { LoginPage } from './pages/LoginFormik';
 import { connect } from "react-redux";
 import { Component } from 'react';
+import RegisterFormik from './pages/RegisterFormik';
 
 class App extends Component {
   constructor(props){
@@ -17,7 +18,8 @@ class App extends Component {
             {message}
           </div>
         )}
-        <LoginPage/>
+        {/* <LoginPage/> */}
+        <RegisterFormik/>
       </div>
     );
   }
