@@ -1,5 +1,5 @@
 import routes from "../../../api";
-import {historyRequest,historySuccess,historyFailure} from "../../actions/historyActions";
+import {historyRequest,historySuccess,historyFailure} from "../../../actions/historyActions";
 
 
 const HistoryTransactionPage =  page =>{
