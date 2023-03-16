@@ -1,11 +1,17 @@
 import routes from "../../../api";
 import { messageBagActions } from "../../../actions/messageBagActions";
 
-const Transfer =  transferInfo =>{
+const TransferService =  transferInfo =>{
     return dispatch =>{
+        if(parseInt(transferInfo.amount) < 0 ){
+            dispatch(messageBagActions.error('Transfer failure.'));
+            return;
+        }
+        const token = sessionStorage.getItem('token');
         fetch(routes.server + routes.route.api.transactions.transfer,{
-            method: "POST",
+            method: 'POST',
             headers: {
+                'Authorization': 'Bearer ' + token,
                 'Content-Type': 'application/json'
               },
             body:JSON.stringify(transferInfo)
@@ -27,4 +33,4 @@ const Transfer =  transferInfo =>{
     }
 
 
-export default Transfer;
+export default TransferService;
