@@ -1,5 +1,5 @@
 import './App.css';
-import { LoginPage } from './pages/LoginFormik';
+import { LoginPage } from './pages/LoginPage';
 import { connect } from "react-redux";
 import { Component } from 'react';
 import RegisterFormik from './pages/RegisterFormik';
@@ -18,8 +18,8 @@ class App extends Component {
             {message}
           </div>
         )}
-        {/* <LoginPage/> */}
-        <RegisterFormik/>
+        <LoginPage/>
+        {/* <RegisterFormik/> */}
       </div>
     );
   }
