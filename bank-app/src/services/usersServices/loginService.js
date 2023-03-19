@@ -1,6 +1,6 @@
-import routes from "../api";
-import { loginActions } from "../actions/loginActions";
-import { messageBagActions } from "../actions/messageBagActions";
+import routes from "../../api";
+import { loginActions } from "../../actions/loginActions";
+import { messageBagActions } from "../../actions/messageBagActions";
 
 const login = (dispatch,values) => {
 

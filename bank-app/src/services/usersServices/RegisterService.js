@@ -1,5 +1,5 @@
-import routes from "../api";
-import { messageBagActions } from "../actions/messageBagActions";
+import routes from "../../api";
+import { messageBagActions } from "../../actions/messageBagActions";
 
 const RegisterUser =  values =>{
     return dispatch =>{
