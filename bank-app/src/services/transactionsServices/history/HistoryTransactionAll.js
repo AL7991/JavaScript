@@ -1,12 +1,14 @@
 import routes from "../../../api";
-import {historyRequest,historySuccess,historyFailure} from "../../actions/historyActions";
+import {historyRequest,historySuccess,historyFailure} from "../../../actions/historyActions";
 
 
-const HistoryTransactionAll =  () =>{
+const historyTransactionAll =  page =>{
     return dispatch =>{
+        const token = sessionStorage.getItem('token');
         dispatch(historyRequest());
-        fetch(routes.server + routes.route.api.transactions.history.all,{
-            method: "GET"
+        fetch(routes.server + routes.route.api.transactions.history.allPages + page,{
+            method: "GET",
+            headers: { 'Authorization': 'Bearer ' + token}
         })
         .then(res => {
             return res.json();
@@ -21,4 +23,4 @@ const HistoryTransactionAll =  () =>{
     }
 
 
-export default HistoryTransactionAll;
+export default historyTransactionAll;

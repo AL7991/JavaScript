@@ -2,11 +2,13 @@ import routes from "../../../api";
 import {historyRequest,historySuccess,historyFailure} from "../../../actions/historyActions";
 
 
-const HistoryTransactionPage =  page =>{
+const historyTransactionPage =  page =>{
     return dispatch =>{
+        const token = sessionStorage.getItem('token');
         dispatch(historyRequest());
         fetch(routes.server + routes.route.api.transactions.history.page + page,{
-            method: "GET"
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + token}
         })
         .then(res => {
             return res.json();
@@ -21,4 +23,4 @@ const HistoryTransactionPage =  page =>{
     }
 
 
-export default HistoryTransactionPage;
+export default historyTransactionPage;

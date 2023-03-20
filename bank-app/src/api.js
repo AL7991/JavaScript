@@ -9,19 +9,21 @@ export default {
                 admin:{
                     getUser: "/api/user/",
                     allUsers: "/api/user/all",
+                    allUsersPages: "/api/user/all/",
                     deleteUser: "/api/user/delete/"
                 }
             },
             transactions:{
-                transfer: "/transfer",
+                transfer: "/transaction/transfer",
                 credit:{
-                    takeCredit: "/takeCredit",
-                    repaymentPartOfCredit: "/repaymentPartOfCredit",
-                    repaymentAllOfCredit: "/repaymentAllOfCredit"
+                    takeCredit: "/transaction/takeCredit",
+                    repaymentPartOfCredit: "/transaction/repaymentPartOfCredit",
+                    repaymentAllOfCredit: "/transaction/repaymentAllOfCredit"
                 },
                 history:{
-                    all: "/history/all",
-                    page: "/history/page/{page}"
+                    all: "/transaction/history/all",
+                    allPages: "/transaction/history/all/",
+                    page: "/transaction/history/page/"
                 } 
             }
         }
