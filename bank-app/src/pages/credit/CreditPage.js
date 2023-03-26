@@ -2,6 +2,8 @@ import { connect } from "react-redux";
 import { Component } from "react";
 import { Container } from "react-bootstrap";
 import TakeCreditComponent from "../../components/credit/TakeCreditComponent";
+import RepayCreditComponent from "../../components/credit/RepayCreditComponent";
+
 
 
 class CreditPage extends Component{
@@ -17,6 +19,10 @@ class CreditPage extends Component{
                 <Container>
                     {!this.props.loggedUser.account.alreadyHaveCredit  && (<div>
                         <TakeCreditComponent />
+                    </div>)}
+    
+                    {this.props.loggedUser.account.alreadyHaveCredit  && (<div>
+                        <RepayCreditComponent amount={this.props.loggedUser.account.amountOfCredit } />
                     </div>)}
                 </Container>
             )
