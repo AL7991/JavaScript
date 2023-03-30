@@ -1,5 +1,6 @@
 import routes from "../../../../api";
 import { messageBagActions } from "../../../../actions/messageBagActions";
+import updateLoggedUser from "../../../usersServices/updateLoggedUserService";
 
 const takeCredit =  amount =>{
     return dispatch =>{
@@ -14,15 +15,18 @@ const takeCredit =  amount =>{
         })
         .then(res => {
             if(res.ok){
-                dispatch(messageBagActions.success('Credit granted success.'));
                 return res;
-            }else if(res.status === 400){
+            }if(res.status === 400){
                 dispatch(messageBagActions.error('The sum is too large. The maximum loan amount is 5000.'));
                 return res;
             }
             else{
                 throw new Error('error');
             }
+        })
+        .then(async ()=>{
+            await dispatch(updateLoggedUser());
+            dispatch(messageBagActions.success('Credit granted success.'));
         })
         .catch( () => {
             dispatch(messageBagActions.error('Credit failure.'));

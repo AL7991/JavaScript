@@ -40,6 +40,7 @@ const login = (dispatch,values) => {
 
 const logout = () => {
     sessionStorage.removeItem('token');
+    window.location.reload();
 };
 
 export const loginService = {

@@ -1,11 +1,11 @@
-import { fetchUsersSuccess } from "../../../actions/usersActions";
+import { fetchUsersInProgress,fetchUsersSuccess,fetchUsersError } from "../../../actions/usersActions";
 import routes from "../../../api";
 
-const GetAllUsersService =  () =>{
-    return dispatch =>{
+const GetAllUsersService =  (page) =>{
+    return async dispatch =>{
         const token = sessionStorage.getItem('token');
         dispatch(fetchUsersInProgress());
-        fetch(routes.server + routes.route.api.users.admin.allUsers,{
+        await fetch(routes.server + routes.route.api.users.admin.allUsersPages + page,{
             method: "GET",
             headers: {"Authorization": "Bearer " + token}
         })

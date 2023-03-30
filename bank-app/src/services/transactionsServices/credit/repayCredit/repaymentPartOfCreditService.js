@@ -1,5 +1,6 @@
 import routes from "../../../../api";
 import { messageBagActions } from "../../../../actions/messageBagActions";
+import updateLoggedUser from "../../../usersServices/updateLoggedUserService";
 
 const RepaymentPartOfCredit =  amount =>{
     return dispatch =>{
@@ -12,9 +13,8 @@ const RepaymentPartOfCredit =  amount =>{
               },
             body:JSON.stringify(amount)
         })
-        .then(res => {
+        .then( res => {
             if(res.ok){
-                dispatch(messageBagActions.success('Payment accepted.'));
                 return res;
             }else if(res.status === 400){
                 dispatch(messageBagActions.error('The amount exceeds the balance of the account.'));
@@ -23,6 +23,10 @@ const RepaymentPartOfCredit =  amount =>{
             else{
                 throw new Error('error');
             }
+        })
+        .then(async ()=>{
+            await dispatch(updateLoggedUser());
+            dispatch(messageBagActions.success('Payment accepted.'));
         })
         .catch( () => {
             dispatch(messageBagActions.error('Something went wrong.'));

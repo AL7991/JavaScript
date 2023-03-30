@@ -1,4 +1,5 @@
-import { fetchUsersSuccess } from "../../../actions/usersActions";
+import { messageBagActions } from "../../../actions/messageBagActions";
+import { fetchUsersInProgress,fetchUsersError, searchUserSuccess } from "../../../actions/usersActions";
 import routes from "../../../api";
 
 const GetUserByNameService =  name =>{
@@ -15,11 +16,12 @@ const GetUserByNameService =  name =>{
             }else{
                 throw new Error('error');
             }})
-            .then(users => {
-                dispatch(fetchUsersSuccess(users));
+            .then(user => {
+                dispatch(searchUserSuccess(user));
             })
             .catch( error => {
                 dispatch(fetchUsersError(error));
+                dispatch(messageBagActions.error("Not Found."))
             });
     }
     }

@@ -1,5 +1,6 @@
 import routes from "../../../../api";
 import { messageBagActions } from "../../../../actions/messageBagActions";
+import updateLoggedUser from "../../../usersServices/updateLoggedUserService";
 
 const RepaymentAllOfCredit =  () =>{
     return dispatch =>{
@@ -10,12 +11,15 @@ const RepaymentAllOfCredit =  () =>{
         })
         .then(res => {
             if(res.ok){
-                dispatch(messageBagActions.success('The loan has been repaid.'));
                 return res;
             }
             else{
                 throw new Error('error');
             }
+        })
+        .then(async ()=>{
+            await dispatch(updateLoggedUser());
+            dispatch(messageBagActions.success('The loan has been repaid.'));
         })
         .catch( () => {
             dispatch(messageBagActions.error('The amount exceeds the balance of the account.'));
