@@ -1,22 +1,30 @@
-import { FETCH_LOGGED_USER_ERROR, FETCH_LOGGED_USER_INPROGRESS, FETCH_LOGGED_USER_SUCCESS } from "./actionsTypes";
+import { FETCH_USERS_ERROR, FETCH_USERS_INPROGRESS, FETCH_USERS_SUCCESS, SEARCH_USER_SUCCESS } from "./actionsTypes";
 
-export const fetchLoggedUserInProgress = () =>{
-return {
-    type: FETCH_LOGGED_USER_INPROGRESS
-    };
-};
-
-export const fetchLoggedUserSuccess = LoggedUser =>{
+export const fetchUsersInProgress = () =>{
     return {
-        type: FETCH_LOGGED_USER_SUCCESS,
-        user: LoggedUser
+        type: FETCH_USERS_INPROGRESS
         };
 };
 
-export const fetchLoggedUserError = error =>{
+export const fetchUsersSuccess = usersArray =>{
     return {
-        type: FETCH_LOGGED_USER_ERROR,
-        loggedUserError: error
+        type: FETCH_USERS_SUCCESS,
+        users: usersArray
         };
 };
+
+export const searchUserSuccess = searchUser =>{
+    return {
+        type: SEARCH_USER_SUCCESS,
+        user: searchUser
+        };
+};
+
+export const fetchUsersError = error =>{
+    return {
+        type: FETCH_USERS_ERROR,
+        usersError: error
+        };
+};
+
 

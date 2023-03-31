@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import { Component } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import HistoryItem from "../../components/history/historyItem";
-import historyTransactionPage from "../../services/transactionsServices/history/HistoryTransactionPageService";
+import historyTransactionPage from "../../services/transactionsServices/history/historyTransactionPageService";
 
-class HistoryPage extends Component {
+class HistoryPageAll extends Component {
     
     constructor(props){
         super(props);
@@ -27,7 +27,6 @@ class HistoryPage extends Component {
 
     renderList = () => {
         const historyTransactions = [...this.props.history];
-
         return historyTransactions.map((page,i) =>(
             <Col xs={12} md={4} key={i}>
             <HistoryItem transaction={page} key={i}/>
@@ -84,4 +83,4 @@ const mapStateToProps= (state) => {
     };
 }
 
-export default connect(mapStateToProps,mapDispatchToProps)(HistoryPage);
+export default connect(mapStateToProps,mapDispatchToProps)(HistoryPageAll);
